@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="primaryGradM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F4C81" />
+      <stop offset="100%" stop-color="#092E52" />
+    </linearGradient>
+    <linearGradient id="accentGradM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="shadowM" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Full-bleed background extending to edges (no rx) -->
+  <rect width="512" height="512" fill="url(#primaryGradM)" />
+
+  <!-- Inner safe-zone container (scaled to 75% centered at 256, 256) -->
+  <g transform="translate(256, 256) scale(0.72) translate(-256, -256)" filter="url(#shadowM)">
+    <!-- Wallet / Safe Vault Body -->
+    <rect x="106" y="146" width="300" height="220" rx="36" fill="#FFFFFF" />
+
+    <!-- Card Slot Accent -->
+    <path d="M106 196 H406" stroke="#E2E8F0" stroke-width="6" stroke-linecap="round" />
+
+    <!-- Wallet Flap with Coin Clasp -->
+    <path d="M296 226 H406 V286 H296 C279.431 286 266 272.569 266 256 C266 239.431 279.431 226 296 226 Z" fill="#0F4C81" />
+    <circle cx="316" cy="256" r="14" fill="#FBBF24" />
+
+    <!-- Growth Graph Bars Inside Wallet -->
+    <rect x="146" y="270" width="22" height="46" rx="6" fill="#93C5FD" />
+    <rect x="182" y="246" width="22" height="70" rx="6" fill="#3B82F6" />
+    <rect x="218" y="222" width="22" height="94" rx="6" fill="url(#accentGradM)" />
+
+    <!-- Green Rising Arrow -->
+    <path d="M152 250 L205 205 L235 220 L300 156" fill="none" stroke="#10B981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M272 156 H300 V184" fill="none" stroke="#10B981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "Account": {
+      "title": "Account",
+      "description": "Financial account such as checking, savings, credit card, or wallet",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "enum": ["corrente", "poupanca", "cartao", "investimento", "carteira"] },
+        "institution": { "type": "string", "maxLength": 100 },
+        "initialBalance": { "type": "number" },
+        "currentBalance": { "type": "number" },
+        "color": { "type": "string", "maxLength": 20 },
+        "active": { "type": "boolean" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "name", "type", "userId"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Income or expense category with optional subcategories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 100 },
+        "type": { "type": "string", "enum": ["despesa", "receita"] },
+        "color": { "type": "string", "maxLength": 20 },
+        "icon": { "type": "string", "maxLength": 50 },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "name", "type", "userId"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Financial ledger entry (despesa, receita, transferencia)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string", "maxLength": 20 },
+        "description": { "type": "string", "maxLength": 200 },
+        "amount": { "type": "number" },
+        "type": { "type": "string", "enum": ["despesa", "receita", "transferencia"] },
+        "accountId": { "type": "string" },
+        "targetAccountId": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "subcategoryId": { "type": "string" },
+        "consolidated": { "type": "boolean" },
+        "notes": { "type": "string", "maxLength": 500 },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "date", "description", "amount", "type", "accountId", "userId"]
+    },
+    "Dream": {
+      "title": "Dream",
+      "description": "Financial savings goal with milestones and monthly targets",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string", "maxLength": 150 },
+        "targetAmount": { "type": "number" },
+        "currentSaved": { "type": "number" },
+        "startDate": { "type": "string", "maxLength": 20 },
+        "targetDate": { "type": "string", "maxLength": 20 },
+        "monthlyYieldRate": { "type": "number" },
+        "monthlySavingNeeded": { "type": "number" },
+        "category": { "type": "string", "maxLength": 100 },
+        "completed": { "type": "boolean" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "title", "targetAmount", "targetDate", "userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Accounts owned by the user"
+    },
+    "/users/{userId}/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Categories created or customized by the user"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Ledger transactions created by the user"
+    },
+    "/users/{userId}/dreams/{dreamId}": {
+      "schema": "Dream",
+      "description": "Financial goals of the user"
+    }
+  }
+}

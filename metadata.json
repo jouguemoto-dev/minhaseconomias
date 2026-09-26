@@ -1,0 +1,6 @@
+{
+  "name": "Minhas Economias",
+  "description": "Sistema completo de controle financeiro pessoal, planejamento de sonhos, orçamento e análise de investimentos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
